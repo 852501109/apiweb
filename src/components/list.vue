@@ -100,7 +100,7 @@
             prop="dict_param_type"
             label="参数位置">
             <template slot-scope="scope">
-              <el-select placeholder="选择" :disabled="scope.row.disabled" v-model="scope.row.isCheckParam">
+              <el-select placeholder="选择" :disabled="scope.row.disabled" v-model="scope.row.paramType">
                 <el-option :value="i.key" :label="i.value" :key="n" v-for="(i, n) in optionMap.dict_param_type" ></el-option>
               </el-select>
             </template>
@@ -209,7 +209,7 @@ export default {
         if(res.code == 200) {
           const rows = res.data
           rows.forEach(item => {
-            item.isCheckParam = item.isCheckParam.toString()
+            item.paramType = item.paramType.toString()
             item.disabled = true
           })
           this.headerData = rows
