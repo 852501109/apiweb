@@ -21,7 +21,7 @@
       <el-form-item label="参数校验:">
         <div class="param_valid"><el-checkbox v-model="form.isParamValid" :indeterminate="false"></el-checkbox></div>
       </el-form-item>
-      <el-form-item label="头部参数:">
+      <el-form-item label="参数配置:">
         <el-table
           :data="tableData"
           border
@@ -51,7 +51,7 @@
           </el-table-column>
           <el-table-column
             prop="dict_param_type"
-            label="参数配置">
+            label="参数位置">
             <template slot-scope="scope">
               <el-select placeholder="选择" :disabled="scope.row.disabled" v-model="scope.row.dict_param_type">
                 <el-option :value="i.key" :label="i.value" :key="n" v-for="(i, n) in optionMap.dict_param_type" ></el-option>
@@ -166,7 +166,7 @@ export default {
         }
         if(this.tableData.some(item => !item.dict_param_type)) {
           this.$message({
-            message: '参数配置不可为空',
+            message: '参数位置不可为空',
             type: 'warning'
           });
           return

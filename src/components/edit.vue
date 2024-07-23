@@ -21,7 +21,7 @@
       <el-form-item label="参数校验:">
         <div class="param_valid"><el-checkbox v-model="form.isParamValid" :indeterminate="false"></el-checkbox></div>
       </el-form-item>
-      <!-- <el-form-item label="头部参数:">
+      <!-- <el-form-item label="参数配置:">
         <el-table
           :data="tableData"
           border
