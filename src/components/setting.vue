@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     add() {
-      this.tableData.push({value: '',dict_param_type:'', name: '', disabled: true})
+      this.tableData.push({value: '',dict_param_type:'', name: '', disabled: false})
     },
     send() {
       if(!this.form.url) {
@@ -182,7 +182,7 @@ export default {
                   "paramName": item.name,
                   "paramValue": item.value,
                   "isCheckParam": 0,
-                  "disOrder": index
+                  "disOrder": index+1
               }
           })
       }
@@ -190,9 +190,14 @@ export default {
       addApiInfo(param).then(res=> {
         if(res.code === 200) {
           this.$message.success('操作成功')
+           setTimeout(() => {
+              let openUrl = this.optionMap.url_prefix + this.form.url
+              if(this.form.method == 0) window.open(openUrl)
+            }, 500)
         } else {
           this.$message.error(res.data)
         }
+
       }).finally(() => {
         this.isLoading = false
       })
